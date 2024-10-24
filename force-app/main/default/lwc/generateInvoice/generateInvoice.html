@@ -1,0 +1,61 @@
+<template>
+    <lightning-quick-action-panel header="Invoice Generation">
+   <!--     <lightning-datatable
+                key-field="id"
+                data={orderLineData}
+                columns={columns}>
+        </lightning-datatable>
+
+            -->
+
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            <!-- Table Header -->
+            <thead>
+                <tr class="slds-line-height_reset">
+                    <th scope="col" style="width: 4rem;">
+                        <div class="slds-th__action slds-p-around_x-small">
+                            <lightning-input  type="checkbox" onchange={handleSelectAll} checked={allSelected}></lightning-input>
+                        </div>
+                    </th>
+                    <th scope="col">
+                        <div class="slds-truncate" title="Product/Service #">Product/Service #</div>
+                    </th>
+                    <th scope="col">
+                        <div class="slds-truncate" title="Product/Service Name">Product/Service Name</div>
+                    </th>
+                    <th scope="col">
+                        <div class="slds-truncate" title="Activation Date">Activation Date</div>
+                    </th>
+                </tr>
+            </thead>
+            <!-- Table Body -->
+            <tbody>
+                <!-- Iterate over data to display rows -->
+                <template for:each={orderLineData} for:item="row" for:index="index">
+                    <tr key={row.Id} class="slds-hint-parent">
+                        <td data-label="Select Row">
+                            <div class="slds-truncate" title="Select Row">
+                                <lightning-input data-label="checkbox" type="checkbox" onchange={handleRowSelection} data-id={row.Id}></lightning-input>
+                            </div>
+                        </td>
+                        <td data-label="itemNumber">
+                            <div class="slds-truncate" title={row.OrderItemNumber}>{row.OrderItemNumber}</div>
+                        </td>
+                        <td data-label="itemName">
+                            <div class="slds-truncate" title={row.productName}>{row.productName}</div>
+                        </td>
+                        <td data-label="activationDate">
+                            <lightning-input id={row.Id} type="date" name="activationDate" value={row.Activation_Date__c} onchange={handleActivationDate}></lightning-input>
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+        
+        <div slot="footer" class="slds-show force-visible">
+            <lightning-button variant="neutral" label="Cancel"></lightning-button>
+            <lightning-button variant="brand" class="slds-m-left_x-small" label="Generate" type="submit" onclick={handleSave}></lightning-button>
+        </div>
+            
+    </lightning-quick-action-panel>
+</template>

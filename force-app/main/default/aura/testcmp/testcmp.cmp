@@ -1,0 +1,5 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+    <ltng:require scripts="{!$Resource.demo + '/index.html'}"
+                  afterScriptsLoaded="{!c.doInit}" />
+    <div id="angularApp"></div>
+</aura:component>

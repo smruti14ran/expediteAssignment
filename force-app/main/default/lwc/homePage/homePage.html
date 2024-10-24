@@ -1,0 +1,76 @@
+<!-- slideshow.html -->
+<template>
+    <div class="slideshow-container">
+        <template for:each={slides} for:item="slide" for:index="index">
+            <div key={slide.id} class={slide.cssClass} onclick={handleImageClick}>
+                <div class="numbertext">{slide.number}</div>
+                <img src={slide.src} style="width:100%">
+                <div class="text">{slide.caption}</div>
+            </div>
+            <a key={slide.id} class="prev" onclick={previousSlide}>❮</a>
+        <a key={slide.id} class="next" onclick={nextSlide}>❯</a>
+        </template>
+        
+    </div>
+    <br>
+    <div style="text-align:center;margin-bottom:10px">
+        <template for:each={slides} for:item="slide" for:index="index">
+            <span key={slide.id} class={slide.dotClass} onclick={selectSlide} data-id={slide.id}></span>
+        </template>
+    </div>
+    <div>
+    <div class="slds-align_absolute-center slds-tabs_card" style="margin-bottom: 5px;">
+        <template if:true={slide1}>
+            <p>Low profile, aerodynamic design, native DC power input, and a family of accessories simplify vehicle and vessel integration.
+A multi-WAN architecture leverages the best of satellite and cellular networks to provide seamless communication via an integrated WiFi access point* while on the move.
+Kymeta is the first to commercially deliver electronically steered user terminals for OneWeb’s LEO network.</p>
+        </template>
+        <template if:true={slide2}>
+            The OW11FV Enterprise Flat Panel for Land Mobility is Intellian’s leading user terminal, delivering enterprise-grade connectivity across all modes of transport on land. Aerodynamic, with a low profile, it is optimized for mobility applications.
+            Paired with the CNX in-vehicle unit, the OW11FM delivers high reliability and performance for land mobility markets including trucking, agriculture, transportation, recreational vehicles, heavy machinery and government or military vehicles.
+            The lightweight design and compact form factor of the OW11FV enables easy installation by a single person.
+        </template>
+        <template if:true={slide3}>
+            Designed to deliver reliable connectivity for general-purpose applications including voice, video, and data while in nomadic or mobile environments, as well as add wireless connectivity to fixed locations.
+            Access cloud-based applications without fear of losing connectivity in mobile environments.
+            Define priority connections to help manage costs and customize network utilization.
+        </template>
+        
+    </div>
+    <div>
+        <lightning-button class="slds-align_absolute-center" name="usage" label="Check Usage"  variant="brand" onclick={handleUsageClick}></lightning-button>
+    </div>
+</div>
+
+<template if:true={buttonClicked}>
+<div>
+            <!-- Modal/Popup Box LWC starts here -->
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <!-- Modal/Popup Box LWC header here -->
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                            <lightning-icon icon-name="utility:close"
+                                alternative-text="close"
+                                variant="inverse"
+                                size="small" ></lightning-icon>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate"><b>Product Name</b></h2>
+                    </header>
+                    <!-- Modal/Popup Box LWC body starts here -->
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                        <p><b>Current Usage : 50GB
+                        </b></p>
+                        <p><b>Remaining Data : 150GB
+                        </b></p>
+                        <p><b>Total Limit : 200GB
+                        </b></p>
+                    </div>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+            
+</div>
+</template>
+</template>

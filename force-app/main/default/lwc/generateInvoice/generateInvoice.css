@@ -1,0 +1,22 @@
+.modal {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 400px; /* Adjust width as needed */
+    margin: auto;
+    background-color: #f9f9f9;
+}
+
+.modal-header {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.modal-footer {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.force-visible{
+    visibility: visible !important;
+}
